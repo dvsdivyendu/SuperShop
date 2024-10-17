@@ -1,0 +1,74 @@
+
+.home {
+  text-align: center;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  height: calc(100vh - 100px);
+}
+
+.hero {
+ 
+  background: #f8f8f8;
+  padding: 292px 20px; /* Maintain padding for spacing
+  text-align: center;
+  color: white; /* Text color for visibility */
+  background-image: url('../assets/background.jpg'); /* Ensure correct path */
+  background-size: cover; /* Cover the entire section */
+  background-position: center; /* Center the image */
+  position: relative; /* Ensure content is positioned relative */
+}
+
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Optional overlay for better text visibility */
+  z-index: 0; /* Send overlay behind the text */
+}
+
+.hero h1, .hero p, .hero .cta-button {
+  position: relative; /* Position text above the background */
+  z-index: 1; /* Ensure text appears above the overlay */
+}
+.hero p{
+  color: white;
+}
+.cta-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+.features {
+  padding: 20px 0; /* Adjusted padding */
+  
+}
+
+.feature-cards {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 36px;
+}
+
+.feature-card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 30%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+

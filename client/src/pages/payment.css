@@ -1,0 +1,35 @@
+/* payment.css */
+.payment-container {
+    padding: 20px;
+}
+
+.order-summary {
+    margin-bottom: 20px;
+}
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 44px;
+}
+
+.payment-form label {
+    margin-bottom: 5px;
+}
+
+.payment-form input {
+    margin-bottom: 15px;
+    padding: 8px;
+}
+
+.payment-form button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.payment-form button:hover {
+    background-color: #0056b3;
+}

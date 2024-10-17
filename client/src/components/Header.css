@@ -1,0 +1,118 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50; /* Dark background */
+    color: white;
+    height: 44px;
+    position: fixed; /* Make header fixed */
+    top: 0; /* Align it to the top */
+    left: 0; /* Align it to the left */
+    right: 0; /* Align it to the right */
+    z-index: 9999;
+}
+
+.logo-container {
+    display: flex; /* Use flexbox to align logo and text */
+    align-items: center; /* Center vertically */
+    height: 44px;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navigation li {
+    margin: 0 15px;
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Cart Link Styles */
+.cart-link {
+    position: relative; /* Make this position relative to position the count */
+}
+
+.cart-icon-container {
+    display: flex; /* Align icon and count in a column */
+    align-items: center; /* Center them */
+}
+
+.cart-count {
+   
+    top: -5px; /* Adjust as needed */
+    right: -10px; /* Adjust as needed */
+    background-color: red; /* Background color for the count badge */
+    color: white; /* Text color */
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px; /* Adjust size */
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none; /* Hide by default */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: white; /* Hamburger icon color */
+}
+
+/* Responsive Styles */
+@media (max-width: 974px) {
+    .header {
+        flex-direction: row; /* Keep the header in row format */
+        justify-content: space-between; /* Align items on the sides */
+    }
+
+    .navigation {
+        display: none; /* Hide navigation by default on small screens */
+        position: absolute; /* Position the dropdown */
+        top: 44px; /* Position below the header */
+        left: 0;
+        right: 0;
+        background-color: #2c3e50; /* Match the header background */
+        z-index: 1000; /* Make sure it overlays other content */
+    }
+
+    .navigation.open {
+        display: block; /* Show when menu is open */
+    }
+
+    .navigation ul {
+        flex-direction: column; /* Stack links vertically */
+        width: 100%;
+    }
+
+    .navigation li {
+        margin: 10px 10px; /* Add vertical spacing */
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger on small screens */
+    }
+}
+
+.navigation .link.active {
+    background-color: #27ae60; /* Darker background for active link */
+    color: white; /* Text color for active link */
+    border-radius: 5px;
+}
+
+.header-logo {
+    height: 40px; /* Adjust height as needed */
+    cursor: default;
+}
