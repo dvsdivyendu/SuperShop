@@ -1,35 +1,132 @@
 /* payment.css */
 .payment-container {
     padding: 20px;
+    max-width: 400px; /* Narrower layout to fit mobile view */
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
 }
 
-.order-summary {
+h1 {
+    text-align: center;
     margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
 }
 
-.payment-form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 44px;
+.section {
+    margin-bottom: 25px;
 }
 
-.payment-form label {
-    margin-bottom: 5px;
+h2 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
 }
 
-.payment-form input {
-    margin-bottom: 15px;
-    padding: 8px;
-}
-
-.payment-form button {
+.address-item {
     padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.change-address, .add-instructions {
+    margin-top: 8px;
+    padding: 8px;
     background-color: #007BFF;
     color: white;
     border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
     cursor: pointer;
 }
 
-.payment-form button:hover {
+.change-address:hover, .add-instructions:hover {
     background-color: #0056b3;
+}
+
+.order-summary {
+    margin-top: 20px;
+}
+
+.order-item {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.total-price {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 15px;
+}
+
+.ssl-notice {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #666;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.proceed-button {
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.proceed-button:hover {
+    background-color: #218838;
+}
+
+.offers {
+    padding: 10px;
+    background-color: #f0f8ff;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+input[type="text"] {
+    padding: 8px;
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+label {
+    display: block;
+    margin: 8px 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+button {
+    font-size: 1rem;
+}
+
+.payment-container p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+input[type="radio"]:checked + label {
+    color: #007BFF;
 }

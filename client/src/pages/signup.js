@@ -3,7 +3,7 @@ import axios from 'axios';
 import './signup.css';
 import { toast } from 'react-toastify';
 
-const Signup = ({ setToast }) => {
+const Signup = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -45,14 +45,16 @@ const Signup = ({ setToast }) => {
     try {
       // Make API call to signup
       const response = await axios.post('http://localhost:5000/api/auth/signup', {
-        email: formData.email, // Change from username to email
+        email: formData.email,
         password: formData.password,
-        role: formData.role, // Include role if your API supports it
+        role: formData.role, // Use default role 'user'
       });
 
-      // Optionally handle success (e.g., show a toast message or redirect)
-      setToast('Signup successful! Please log in.');
-      setFormData({ email: '', password: '', role: 'user' }); // Reset form
+      // Show success toast message
+      toast.success('Signup successful! Please log in.');
+      
+      // Reset form
+      setFormData({ email: '', password: '', role: 'user' });
     } catch (error) {
       // Handle errors (e.g., user already exists)
       if (error.response && error.response.status === 409) {
@@ -90,19 +92,9 @@ const Signup = ({ setToast }) => {
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="role">Role:</label>
-          <select
-            id="role"
-            name="role"
-            value={formData.role}
-            onChange={handleChange}
-            required
-          >
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-          </select>
-        </div>
+        {/* Removed the role selection dropdown */}
+        <input type="hidden" name="role" value={formData.role} />
+        
         <button type="submit" className="submit-button">Sign Up</button>
       </form>
       <p className="login-link">

@@ -69,8 +69,8 @@ const EventsPage = () => {
           {upcomingEvents.map(event => (
             <li className="list" key={event.id}>
               <h3>{event.title}</h3>
-              <p>{event.date} | {event.time}</p>
-              <p>{event.description}</p>
+              <p className="pevents">{event.date} | {event.time}</p>
+              <p className="pevents">{event.description}</p>
               <button>Reserve Your Spot</button>
             </li>
           ))}
@@ -83,9 +83,9 @@ const EventsPage = () => {
           {todayEvents.map((event, index) => (
             <li className="list" key={index}>
               <h3>{event.title}</h3>
-              <p>{event.time}</p>
-              <p>{event.description}</p>
-            </li>
+              <p className="pevents">{event.time}</p>
+              <p className="pevents">{event.description}</p>
+            </li> 
           ))}
         </ul>
       </section>
@@ -96,8 +96,8 @@ const EventsPage = () => {
           {previousEvents.map((event, index) => (
             <li className="list" key={index}>
               <h3>{event.title}</h3>
-              <p>{event.date}</p>
-              <p>{event.highlights}</p>
+              <p className="pevents">{event.date}</p>
+              <p className="pevents">{event.highlights}</p>
             </li>
           ))}
         </ul>

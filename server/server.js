@@ -5,6 +5,8 @@ const menuRoutes = require('./routes/menuRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const reservationRoutes = require('./routes/reservationRoutes');
 const { connectDB } = require('./config/db');
+const feedbackRoutes = require('./routes/feedbackRoutes');
+
 require('dotenv').config();
 
 const app = express();
@@ -19,6 +21,7 @@ connectDB();
 app.use('/api/auth', authRoutes);
 app.use('/api/menu', menuRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/feedback', feedbackRoutes);
 app.use('/api/reservations', reservationRoutes);
 app.use('/images', express.static('public/images')); // Serve images from public/images
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Feedback.css';
 
 const ContactPage = () => {
@@ -13,10 +14,16 @@ const ContactPage = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here (e.g., send to an API)
-    alert('Thank you for your feedback!');
+    try {
+      // Send form data to the feedback API
+      await axios.post('http://localhost:5000/api/feedback', formData);
+      alert('Thank you for your feedback!');
+      setFormData({ name: '', email: '', message: '' }); // Reset form
+    } catch (error) {
+      alert('Error submitting feedback. Please try again.');
+    }
   };
 
   return (

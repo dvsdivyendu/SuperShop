@@ -22,13 +22,28 @@ body {
   justify-content: center;
   margin-bottom: 20px;
 }
-.search-filter input[type="text"]
-{
-  width:598px;
+
+.search-filter input[type="text"] {
+  width: 598px;
 }
-.search-filter input[type="text"], select {
+
+.search-filter input[type="text"],
+select {
   padding: 10px;
   margin: 0 10px;
+}
+
+/* Media Queries for Specific Widths */
+@media (min-width: 500px) and (max-width: 749px) {
+  .search-filter input[type="text"] {
+    width: 500px; /* Set width to 500px for this range */
+  }
+}
+
+@media (max-width: 499px) {
+  .search-filter input[type="text"] {
+    width: 247px; /* Set width to 247px for this range */
+  }
 }
 
 .menu-items {
@@ -45,6 +60,11 @@ body {
   padding: 15px;
   width: 200px;
   text-align: center;
+  transition: transform 0.3s; /* Add transition for smooth effect */
+}
+
+.menu-item:hover {
+  transform: translateY(-5px); /* Move the item up on hover */
 }
 
 .item-image {
@@ -70,7 +90,7 @@ body {
 .increase-button,
 .add-to-cart {
   width: 100px; /* Set a fixed width for buttons */
-  padding: 10px;padding: 10px 15px;
+  padding: 10px; padding: 10px 15px;
   cursor: pointer;
 }
 
@@ -80,7 +100,7 @@ body {
   border: none;
   border-radius: 5px;
   margin-top: 10px;
-  width:100%;
+  width: 100%;
 }
 
 .add-to-cart:hover {

@@ -1,4 +1,5 @@
 .contact-page {
+    margin-top: 24px;
     padding: 20px;
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
@@ -11,9 +12,8 @@
 }
 
 .contact-form {
-    
     background-color: #fff;
-    padding: 15px;
+    padding: 50px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -26,12 +26,16 @@
 
 .contact-form input,
 .contact-form textarea {
-    width: 98%;
+    width: 100%; /* Set to 100% for consistent width */
     padding: 10px;
     font-size: 1em;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 10px;
+}
+
+.contact-form textarea {
+    height: 160px; /* Set height of the message box to be 4 times the input height */
 }
 
 .contact-form button {
@@ -56,8 +60,9 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.social-media{
-  margin-bottom: 26px;
+
+.social-media {
+    margin-bottom: 26px;
 }
 
 .contact-info h2,

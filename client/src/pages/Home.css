@@ -70,5 +70,13 @@
   padding: 20px;
   width: 30%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
 }
 
+.feature-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+.feature-card a {
+  text-decoration: none; /* Remove underline from links */
+  color: inherit; /* Use the current text color */
+}
