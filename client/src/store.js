@@ -7,7 +7,8 @@ const store = configureStore({
   reducer: {
     cart: cartReducer, // Include the cart reducer
     auth: authReducer, // Include the auth reducer
-    reservations: reservationReducer, // Include the reservation reducer
+    reservations: reservationReducer,
+     // Include the reservation reducer
   },
 });
 

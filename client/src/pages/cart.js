@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './cart.css';
-import { useSelector, useDispatch } from 'react-redux'; 
-import { clearCart, removeItem, setCartItems } from '../slices/slice'; 
-import { useNavigate } from 'react-router-dom'; 
-import { selectUser } from '../slices/authSlice'; 
+import { useSelector, useDispatch } from 'react-redux';
+import { clearCart, removeItem, setCartItems } from '../slices/slice';
+import { useNavigate } from 'react-router-dom';
+import { selectUser } from '../slices/authSlice';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Cart = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector(selectUser);
     const cart = useSelector(state => state.cart); // Get cart from Redux state
-    const [errorMessage, setErrorMessage] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
 
     useEffect(() => {
         // Fetch cart items from the server and store them in Redux
@@ -20,10 +20,10 @@ const Cart = () => {
             try {
                 const response = await axios.get('http://localhost:5000/api/cart');
                 dispatch(setCartItems(response.data));
-                console.log(response.data) // Update Redux state with fetched cart items
+                console.log(response.data); // Update Redux state with fetched cart items
             } catch (error) {
                 console.error('Error fetching cart items:', error);
-                setErrorMessage('Failed to fetch cart items.');
+                toast.error('Failed to fetch cart items.');
             }
         };
 
@@ -44,10 +44,10 @@ const Cart = () => {
         try {
             await axios.delete(`http://localhost:5000/api/cart/${itemId}`);
             dispatch(removeItem(itemId)); // Update Redux state
-            setSuccessMessage('Item removed successfully.');
+            toast.success('Item removed successfully.');
         } catch (error) {
             console.error('Error removing item from cart:', error);
-            setErrorMessage('Failed to remove item from cart.');
+            toast.error('Failed to remove item from cart.');
         }
     };
 
@@ -55,18 +55,18 @@ const Cart = () => {
         try {
             await axios.delete('http://localhost:5000/api/cart/clear');
             dispatch(clearCart()); // Clear cart in Redux
-            setSuccessMessage('Cart cleared successfully.');
+            toast.success('Cart cleared successfully.');
         } catch (error) {
             console.error('Error clearing the cart:', error);
-            setErrorMessage('Failed to clear the cart.');
+            toast.error('Failed to clear the cart.');
         }
     };
+    
 
     return (
         <div className="cart-container">
+            <ToastContainer />
             <h1>Your Cart</h1>
-            {errorMessage && <p className="error">{errorMessage}</p>}
-            {successMessage && <p className="success">{successMessage}</p>}
             {Object.keys(cart).length === 0 ? (
                 <p>Your cart is empty.</p>
             ) : (

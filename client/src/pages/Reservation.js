@@ -58,7 +58,7 @@ const CreateReservation = () => {
 
   return (
     <div className="create-reservation-container">
-      <h1>Create a New Reservation</h1>
+      <h1 className='headResev'>Create a New Reservation</h1>
       {errorMessage && <p className="error">{errorMessage}</p>}
       {successMessage && <p className="success">{successMessage}</p>}
       <form onSubmit={handleSubmit} className="reservation-form">

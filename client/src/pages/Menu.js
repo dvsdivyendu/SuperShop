@@ -84,6 +84,7 @@ const MenuCart = () => {
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
+                    
                     <select onChange={(e) => setFilter(e.target.value)} value={filter}>
                         <option value="">All</option>
                         <option value="beer">Beer</option>
