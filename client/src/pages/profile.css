@@ -1,58 +1,98 @@
 .profile-container {
-    max-width: 600px; /* Set a max width for the profile container */
-    margin: 20px auto; /* Center the container */
-    padding: 20px; /* Padding inside the container */
-    background-color: #f9f9f9; /* Light background color */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-.profile-header {
-    font-size: 24px; /* Larger font size for the header */
-    margin-bottom: 20px; /* Space below the header */
-    color: #333; /* Dark text color */
-}
-
-.profile-info {
-    font-size: 18px; /* Standard font size for profile info */
-    color: #555; /* Slightly lighter color for text */
-}
-
-.profile-field {
-    margin-bottom: 15px; /* Space between fields */
-}
-
-strong {
-    color: #333; /* Stronger text for field labels */
-}
-
-.reservations-list {
-    margin-top: 20px; /* Space above the reservations list */
-}
-
-.reservation-item {
-    background-color: #fff; /* White background for reservation items */
-    border: 1px solid #ddd; /* Light gray border for separation */
-    border-radius: 8px; /* Rounded corners */
-    padding: 15px; /* Padding inside each reservation block */
-    margin-bottom: 15px; /* Space between each reservation block */
-    transition: background-color 0.3s; /* Smooth transition on hover */
-}
-
-.reservation-item:hover {
-    background-color: #f0f0f0; /* Light gray background on hover */
-}
-
-.reservation-item p {
-    margin: 5px 0; /* Space between paragraphs within reservation items */
-}
-
-.error {
-    color: red; /* Red text for error messages */
-    margin-bottom: 15px; /* Space below error messages */
-}
-
-.loading {
-    font-size: 18px; /* Standard font size for loading message */
-    color: #555; /* Gray color for loading message */
-}
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .profile-icon {
+    margin-right: 10px;
+  }
+  
+  .profile-info {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .reservations-list {
+    margin-top: 20px;
+  }
+  
+  .reservation-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .reservation-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .delete-button, .edit-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .delete-button {
+    background-color: #e74c3c;
+  }
+  
+  .edit-button {
+    background-color: #3498db;
+  }
+  
+  .edit-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .update-button {
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  .close-modal-button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .close-modal-button:hover {
+    color: #ff0000;
+  }
+  .edit-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }  

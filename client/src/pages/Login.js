@@ -1,26 +1,21 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from '../slices/authSlice'; // Import the login action
+import { login } from '../slices/authSlice';
 import './Login.css';
-import { NavLink, useNavigate } from 'react-router-dom'; // Import useNavigate
-import axios from 'axios'; // Import axios
+import { NavLink, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 const Login = ({ setToast }) => {
-  const dispatch = useDispatch(); // Hook to access the dispatch function
-  const navigate = useNavigate(); // Initialize navigate function
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-    setError(''); // Clear any previous error messages
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setError('');
   };
 
   const validateEmail = (email) => {
@@ -31,36 +26,45 @@ const Login = ({ setToast }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate email
     if (!validateEmail(formData.email)) {
       setError('Please enter a valid email address.');
       return;
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
-        email: formData.email, // Change from username to email
-        password: formData.password,
-      });
+      const response = await axios.post(
+        'http://localhost:5000/api/auth/login',
+        { email: formData.email, password: formData.password },
+        { withCredentials: true }
+      );
 
-      // Assuming the API returns a token
-      localStorage.setItem('token', response.data.token);
-      
-      // Dispatch the login action with user data
-      dispatch(login({ email: formData.email, role: 'user' })); // Adjust role as needed
+      console.log('Login response:', response.data);
 
-      // Navigate to the cart page
-      navigate('/cart'); // Redirect to the cart page
+      // Handle user info from the response
+      const decodedToken = jwtDecode(response.data.token);
+      console.log('Decoded JWT:', decodedToken);
+      console.log('Email:', decodedToken.email);
+      console.log('Role:', decodedToken.role);
+      dispatch(
+        login({
+          email: decodedToken.email,
+          role: decodedToken.role,
+        
+        })
+      );
+
+      // Navigate based on the user role
+      navigate(decodedToken.role === 'admin' ? '/admin' : '/profile');
     } catch (error) {
       setToast('Invalid email or password');
-      console.error(error);
+      console.error('Login error:', error);
     }
   };
 
   return (
     <div className="login-container">
       <h1>Login</h1>
-      {error && <p className="error-message">{error}</p>} {/* Display error message */}
+      {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit} className="login-form">
         <div className="form-group">
           <label htmlFor="email">Email:</label>

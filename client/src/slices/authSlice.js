@@ -1,25 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-const initialState = {
-  user: null//JSON.parse(localStorage.getItem('currentUser')) || null, // Load user from local storage if available
-};
+import Cookies from 'js-cookie';
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState,
+  initialState: {
+    user: null,
+  },
   reducers: {
     login: (state, action) => {
       state.user = action.payload;
-      //localStorage.setItem('currentUser', JSON.stringify(action.payload)); // Store user in local storage
+      Cookies.set('authToken', action.payload.token); // Set token in cookies
     },
     logout: (state) => {
       state.user = null;
-      //localStorage.removeItem('currentUser'); // Remove user from local storage
+      Cookies.remove('authToken'); // Remove token from cookies
+    },
+    setUserFromCookie: (state, action) => {
+      state.user = action.payload;
     },
   },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, logout, setUserFromCookie } = authSlice.actions;
 
 export const selectUser = (state) => state.auth.user;
 

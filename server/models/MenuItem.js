@@ -14,7 +14,7 @@ const menuItemSchema = new mongoose.Schema({
         required: true,
     },
     image: {
-        type: String, // Store the URL or path to the image
+        type: String, 
         required: true,
     },
     type: {

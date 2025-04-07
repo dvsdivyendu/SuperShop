@@ -71,7 +71,7 @@ const EventsPage = () => {
               <h3>{event.title}</h3>
               <p className="pevents">{event.date} | {event.time}</p>
               <p className="pevents">{event.description}</p>
-              <button>Reserve Your Spot</button>
+              <button className='eventbutton'>Reserve Your Spot</button>
             </li>
           ))}
         </ul>

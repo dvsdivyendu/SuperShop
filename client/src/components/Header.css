@@ -116,3 +116,9 @@
     height: 40px; /* Adjust height as needed */
     cursor: default;
 }
+
+.logout-button{
+    background-color: #27ae60;
+    border-radius: 4px;
+    color: white;
+}

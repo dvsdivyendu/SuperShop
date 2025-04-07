@@ -48,7 +48,7 @@
     color: #555;
   }
   
-  button {
+  .eventbutton {
     background-color: #63E6BE;
     color: white;
     border: none;

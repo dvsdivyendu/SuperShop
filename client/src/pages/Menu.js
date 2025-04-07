@@ -1,3 +1,4 @@
+// components/MenuCart.js
 import React, { useState, useEffect } from 'react';
 import './Menu.css';
 import { useDispatch } from 'react-redux'; 
@@ -16,7 +17,6 @@ const MenuCart = () => {
         const fetchMenuItems = async () => {
             try {
                 const response = await axios.get('http://localhost:5000/api/menu');
-                console.log('API Response:', response.data);
                 const initialQuantities = response.data.reduce((acc, item) => {
                     acc[item._id] = 1; // Set default quantity to 1
                     return acc;
@@ -49,13 +49,11 @@ const MenuCart = () => {
         const quantity = quantities[item._id];
         if (quantity > 0) {
             try {
-                // Send a POST request to add the item to the cart
                 await axios.post('http://localhost:5000/api/cart/add', {
-                    itemId: item._id, // Use itemId as expected by your backend
-                    quantity, // Pass the quantity directly
+                    itemId: item._id,
+                    quantity,
                 });
 
-                // Dispatch the item to the Redux store
                 dispatch(addItem({ 
                     id: item._id, 
                     name: item.name, 
@@ -84,7 +82,6 @@ const MenuCart = () => {
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
-                    
                     <select onChange={(e) => setFilter(e.target.value)} value={filter}>
                         <option value="">All</option>
                         <option value="beer">Beer</option>
@@ -103,7 +100,7 @@ const MenuCart = () => {
                             <img src={item.image} alt={item.name} className="item-image" />
                             <h3 className="item-name">{item.name}</h3>
                             <p className="item-details">{item.details}</p>
-                            <p className="item-price">${item.price.toFixed(2)}</p>
+                            <p className="item-price">₹{Math.round(item.price)}</p>
                             <div className="cart-actions">
                                 <button
                                     className="decrease-button"

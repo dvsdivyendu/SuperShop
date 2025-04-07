@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import './cart.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearCart, removeItem, setCartItems } from '../slices/slice';
@@ -12,15 +12,14 @@ const Cart = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector(selectUser);
-    const cart = useSelector(state => state.cart); // Get cart from Redux state
+    const cart = useSelector(state => state.cart);
 
     useEffect(() => {
-        // Fetch cart items from the server and store them in Redux
         const fetchCartItems = async () => {
             try {
                 const response = await axios.get('http://localhost:5000/api/cart');
                 dispatch(setCartItems(response.data));
-                console.log(response.data); // Update Redux state with fetched cart items
+                console.log(response.data);
             } catch (error) {
                 console.error('Error fetching cart items:', error);
                 toast.error('Failed to fetch cart items.');
@@ -43,7 +42,7 @@ const Cart = () => {
     const handleRemoveItem = async (itemId) => {
         try {
             await axios.delete(`http://localhost:5000/api/cart/${itemId}`);
-            dispatch(removeItem(itemId)); // Update Redux state
+            dispatch(removeItem(itemId));
             toast.success('Item removed successfully.');
         } catch (error) {
             console.error('Error removing item from cart:', error);
@@ -54,14 +53,13 @@ const Cart = () => {
     const handleClearCart = async () => {
         try {
             await axios.delete('http://localhost:5000/api/cart/clear');
-            dispatch(clearCart()); // Clear cart in Redux
+            dispatch(clearCart());
             toast.success('Cart cleared successfully.');
         } catch (error) {
             console.error('Error clearing the cart:', error);
             toast.error('Failed to clear the cart.');
         }
     };
-    
 
     return (
         <div className="cart-container">
@@ -75,16 +73,17 @@ const Cart = () => {
                         {Object.values(cart).map(item => (
                             <div className="cart-item" key={item.id}>
                                 <img 
-                                    src={`http://localhost:5000/images/${item.image}`} alt={item.name}  
+                                    src={`http://localhost:5000/images/${item.image}`} 
+                                    alt={item.name}  
                                     onError={(e) => { e.target.src = '/placeholder.jpg'; }} 
                                     className="cart-item-image" 
                                 />
                                 <div className="cart-item-details">
                                     <h3>{item.name}</h3>
-                                    <p>Price: ${(item.price || 0).toFixed(2)}</p>
+                                    <p>Price: ₹{(item.price || 0).toFixed(2)}</p>
                                     <p>Quantity: {item.quantity}</p>
-                                    <p>Total: ${(item.price * item.quantity || 0).toFixed(2)}</p>
-                                    <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
+                                    <p>Total: ₹{(item.price * item.quantity || 0).toFixed(2)}</p>
+                                    <button className="remove-button" onClick={() => handleRemoveItem(item.id)}>Remove</button>
                                 </div>
                             </div>
                         ))}

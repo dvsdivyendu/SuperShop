@@ -1,3 +1,4 @@
+// pages/ContactPage.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Feedback.css';
@@ -8,6 +9,7 @@ const ContactPage = () => {
     email: '',
     message: '',
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,13 +18,15 @@ const ContactPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      // Send form data to the feedback API
       await axios.post('http://localhost:5000/api/feedback', formData);
       alert('Thank you for your feedback!');
       setFormData({ name: '', email: '', message: '' }); // Reset form
     } catch (error) {
       alert('Error submitting feedback. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,7 +65,9 @@ const ContactPage = () => {
             required
           />
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Submitting...' : 'Submit'}
+        </button>
       </form>
 
       <section className="contact-info">

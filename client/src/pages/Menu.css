@@ -90,19 +90,28 @@ select {
 .increase-button,
 .add-to-cart {
   width: 100px; /* Set a fixed width for buttons */
-  padding: 10px; padding: 10px 15px;
+  padding: 10px 15px; /* Adjusted padding */
   cursor: pointer;
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #007bff; /* Primary button color */
+  color: white; /* Button text color */
+  transition: background-color 0.3s, transform 0.2s; /* Transition for hover effects */
+}
+
+.decrease-button:hover,
+.increase-button:hover,
+.add-to-cart:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
 .add-to-cart {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
   margin-top: 10px;
-  width: 100%;
+  width: 100%; /* Full width for add to cart button */
 }
 
 .add-to-cart:hover {
-  background-color: #0056b3;
+  background-color: #004494; /* Even darker blue on hover */
+  transform: scale(1.05); /* Zoom effect */
 }

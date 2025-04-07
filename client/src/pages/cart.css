@@ -4,49 +4,78 @@
 }
 
 .cart-items {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between items */
 }
 
 .cart-item {
     display: flex;
-    align-items: center;
-    margin: 10px 0;
+    flex-direction: column; /* Stack image and details */
+    align-items: center; /* Center align items */
     padding: 10px;
     border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    background-color: #fff; /* Optional: card background color */
+   
 }
 
 .cart-item-image {
     width: 100px;
     height: 100px;
-    margin-right: 20px;
+    margin-bottom: 10px; /* Space between image and text */
 }
 
 .cart-item-details {
-    flex: 1;
+    text-align: center; /* Center text */
+    flex: 1; /* Allow details to take available space */
 }
 
-.clear-cart {
-    background-color: red;
+.remove-button {
+    background-color: #ff4444; /* Red color */
     color: white;
     border: none;
-    padding: 10px;
+    padding: 8px 12px;
+    border-radius: 4px;
     cursor: pointer;
+    margin-top: 10px; /* Space between details and button */
+    transition: background-color 0.3s;
+}
+
+.remove-button:hover {
+    background-color: #cc0000; /* Darker red on hover */
 }
 
 .cart-summary {
     margin-top: 20px;
-    margin-bottom: 40px;
+    text-align: center; /* Center summary text */
 }
-.checkout-button {
-    background-color: green;
+
+.clear-cart {
+    background-color: red; /* Change to red */
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
-    margin-left: 10px;
+    margin: 5px; /* Space between buttons */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.clear-cart:hover {
+    background-color: darkred; /* Darker red on hover */
+}
+
+.checkout-button {
+    background-color: #54c6a1; /* Green color */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin: 5px; /* Space between buttons */
+    border-radius: 4px; /* Rounded corners */
 }
 
 .checkout-button:hover {
-    background-color: darkgreen;
+    background-color: darkgreen; /* Darker green on hover */
 }

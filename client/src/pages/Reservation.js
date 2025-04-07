@@ -1,3 +1,4 @@
+// components/CreateReservation.js
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addReservation } from '../slices/reservationSlice';
@@ -113,7 +114,7 @@ const CreateReservation = () => {
             required
           />
         </div>
-        <button type="submit">Create Reservation</button>
+        <button className='submitreservation' type="submit">Create Reservation</button>
       </form>
     </div>
   );

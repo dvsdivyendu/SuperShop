@@ -32,7 +32,7 @@ input {
   width: 100%; /* Change to 100% for full width */
 }
 
-button {
+.submitreservation {
   padding: 10px;
   background-color: #63E6BE; /* Match submit button color */
   color: white;

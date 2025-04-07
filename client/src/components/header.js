@@ -36,10 +36,17 @@ const Header = () => {
     fetchCartData();
   }, [dispatch]);
 
-  const handleLogout = () => {
-    dispatch(logout());
-    dispatch(clearCart());
-  };
+  const handleLogout = async () => {
+    try {
+        await axios.post('http://localhost:5000/api/auth/logout', {}, { withCredentials: true });
+        dispatch(logout());
+        dispatch(clearCart());
+        // Optionally, you might want to redirect the user or show a success message
+    } catch (error) {
+        console.error('Logout failed:', error);
+    }
+};
+
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -49,7 +56,7 @@ const Header = () => {
     <header className="header">
       <div className="logo-container">
         <img src={logoImage} alt="Logo" className="header-logo" id='logo-img' />
-        <div className="logo">The Beer</div>
+        <div className="logo">CafeTown</div>
       </div>
       <button className="hamburger" onClick={toggleMenu}>
         {menuOpen ? <FontAwesomeIcon icon={faTimes} /> : <FontAwesomeIcon icon={faBars} />}
@@ -73,7 +80,7 @@ const Header = () => {
           {user ? (
             <>
               <li>
-                <NavLink to="/profile" className="link">
+                <NavLink to={user.role === 'admin' ? '/admin' : '/profile'} className="link">
                   {user.email} <FontAwesomeIcon icon={faUser} style={{ color: '#63E6BE' }} />
                 </NavLink>
               </li>

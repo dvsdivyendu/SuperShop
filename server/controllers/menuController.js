@@ -1,18 +1,19 @@
+// server/controllers/menuController.js
 const mongoose = require('mongoose');
 const Menu = require('../models/MenuItem'); // Adjust this import based on your MenuItem model path
-
-console.log('Menu controller loaded');
 
 // Get all menu items
 exports.getMenuItems = async (req, res) => {
     console.log('Get menu items request received');
     try {
-        const menuItems = await Menu.find(); // Fetch all menu items from the database
+        const menuItems = await Menu.find();
+
         // Map the items to include the full image URL
         const itemsWithImages = menuItems.map(item => ({
             ...item.toObject(),
-            image: `http://localhost:5000/images/${item.image}` // Assuming 'image' is the filename
+            image: item.image ? `http://localhost:5000/images/${item.image}` : null // Full URL if image exists
         }));
+
         res.status(200).json(itemsWithImages); // Send back the menu items as a response
     } catch (error) {
         console.error('Error fetching menu items:', error);
@@ -20,26 +21,62 @@ exports.getMenuItems = async (req, res) => {
     }
 };
 
-// Get a specific menu item by ID
-exports.getMenuItem = async (req, res) => {
-    const { id } = req.params; // Extract the ID from the request parameters
-    console.log('Get menu item request received for id:', id);
+// Add a new menu item
+exports.addMenuItem = async (req, res) => {
+    const { name, details, price, type } = req.body;
+    const image = req.file ? req.file.filename : null; // Use filename for the image path
 
-    // Validate the ID
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(400).json({ message: 'Invalid ID format' });
-    }
+    const menuItem = new Menu({
+        name,
+        details,
+        price,
+        type,
+        image,
+    });
 
     try {
-        const menuItem = await Menu.findById(id); // Find the menu item by ID
-        if (!menuItem) {
-            return res.status(404).json({ message: 'Menu item not found' }); // Handle item not found
-        }
-        // Include the full image URL
-        menuItem.image = `http://localhost:5000/images/${menuItem.image}`; // Assuming 'image' is the filename
-        res.status(200).json(menuItem); // Send back the found menu item
+        const savedItem = await menuItem.save();
+        res.status(201).json(savedItem);
     } catch (error) {
-        console.error('Error fetching menu item:', error);
-        res.status(500).json({ message: 'Error fetching menu item' });
+        res.status(400).json({ message: error.message });
+    }
+};
+
+// Update a menu item
+exports.updateMenuItem = async (req, res) => {
+    const { id } = req.params;
+    const { name, details, price, type } = req.body;
+    const image = req.file ? req.file.filename : null; // Use filename for the image path
+
+    try {
+        const updatedItem = await Menu.findByIdAndUpdate(id, {
+            name,
+            details,
+            price,
+            type,
+            image,
+        }, { new: true });
+
+        if (!updatedItem) return res.status(404).json({ message: 'Item not found' });
+        
+        // Return the updated item with the full image URL
+        res.json({
+            ...updatedItem.toObject(),
+            image: updatedItem.image ? `http://localhost:5000/images/${updatedItem.image}` : null
+        });
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
+// Delete a menu item
+exports.deleteMenuItem = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const deletedItem = await Menu.findByIdAndDelete(id);
+        if (!deletedItem) return res.status(404).json({ message: 'Item not found' });
+        res.json({ message: 'Item deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 };

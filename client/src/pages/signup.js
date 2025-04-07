@@ -7,7 +7,7 @@ const Signup = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    role: 'user', // Default role
+    role: 'user', // Default role is 'user'
   });
   const [error, setError] = useState('');
 
@@ -42,14 +42,17 @@ const Signup = () => {
       return;
     }
 
+    // Determine role based on email
+    const role = formData.email === 'divyendu123@gmail.com' ? 'admin' : 'user';
+
     try {
       // Make API call to signup
       const response = await axios.post('http://localhost:5000/api/auth/signup', {
         email: formData.email,
         password: formData.password,
-        role: formData.role, // Use default role 'user'
+        role: role, // Use determined role
       });
-
+      console.log(response);
       // Show success toast message
       toast.success('Signup successful! Please log in.');
       
@@ -92,9 +95,6 @@ const Signup = () => {
             required
           />
         </div>
-        {/* Removed the role selection dropdown */}
-        <input type="hidden" name="role" value={formData.role} />
-        
         <button type="submit" className="submit-button">Sign Up</button>
       </form>
       <p className="login-link">

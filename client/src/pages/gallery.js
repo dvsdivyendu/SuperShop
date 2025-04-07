@@ -1,3 +1,4 @@
+// pages/Gallery.js
 import React from 'react';
 import './Gallery.css';
 import interior from '../assets/interior.jpg';
@@ -50,9 +51,9 @@ const Gallery = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true, // Enable autoplay
-    autoplaySpeed: 5000, // Set autoplay speed
-    pauseOnHover: true, // Pause autoplay on hover
+    autoplay: true,
+    autoplaySpeed: 5000,
+    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1024,
