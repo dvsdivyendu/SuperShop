@@ -55,8 +55,8 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo-container">
-        <img src={logoImage} alt="Logo" className="header-logo" id='logo-img' />
-        <div className="logo">CafeTown</div>
+        {/* <img src={logoImage} alt="Logo" className="header-logo" id='logo-img' /> */}
+        <div className="logo">SuperShop</div>
       </div>
       <button className="hamburger" onClick={toggleMenu}>
         {menuOpen ? <FontAwesomeIcon icon={faTimes} /> : <FontAwesomeIcon icon={faBars} />}
@@ -64,9 +64,9 @@ const Header = () => {
       <nav className={`navigation ${menuOpen ? 'open' : ''}`}>
         <ul>
           <li><NavLink to="/" className="link">Home</NavLink></li>
-          <li><NavLink to="/menu" className="link">Menu</NavLink></li>
-          <li><NavLink to="/reservations" className="link">Reservations</NavLink></li>
-          <li><NavLink to="/event" className="link">Events</NavLink></li>
+          <li><NavLink to="/menu" className="link">Products</NavLink></li>
+          {/* <li><NavLink to="/reservations" className="link">Reservations</NavLink></li> */}
+          <li><NavLink to="/event" className="link">Trending Products</NavLink></li>
           <li><NavLink to="/feedback" className="link">Contact Us</NavLink></li>
           <li>
             <NavLink to="/cart" className="link cart-link">

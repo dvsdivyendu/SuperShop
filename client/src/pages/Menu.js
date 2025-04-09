@@ -74,7 +74,7 @@ const MenuCart = () => {
     return (
         <div className="menu-cart">
             <header className='menuheader'>
-                <h1>Pub & Bar Menu</h1>
+                <h1>Products</h1>
                 <div className="search-filter">
                     <input 
                         type="text"
@@ -84,9 +84,9 @@ const MenuCart = () => {
                     />
                     <select onChange={(e) => setFilter(e.target.value)} value={filter}>
                         <option value="">All</option>
-                        <option value="beer">Beer</option>
-                        <option value="cocktail">Cocktail</option>
-                        <option value="snack">Snack</option>
+                        <option value="beer">Electronics</option>
+                        <option value="cocktail">Food</option>
+                        <option value="snack">Cloths</option>
                     </select>
                 </div>
             </header>

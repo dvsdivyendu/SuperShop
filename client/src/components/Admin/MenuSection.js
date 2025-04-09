@@ -100,9 +100,9 @@ const MenuSection = () => {
         />
         <select name="type" value={formData.type} onChange={handleChange} required>
           <option value="">Select Type</option>
-          <option value="beer">Beer</option>
-          <option value="cocktail">Cocktail</option>
-          <option value="snack">Snack</option>
+          <option value="beer">Electronics</option>
+          <option value="cocktail">Food</option>
+          <option value="snack">Cloths</option>
         </select>
         
         {/* Show previous image if editing */}

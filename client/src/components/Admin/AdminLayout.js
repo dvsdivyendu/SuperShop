@@ -13,13 +13,13 @@ const AdminLayout = () => {
                         <Link to="users" onClick={() => setActiveSection('users')}>Users</Link>
                     </li>
                     <li>
-                        <Link to="reservations" onClick={() => setActiveSection('reservations')}>Reservations</Link>
+                        <Link to="reservations" onClick={() => setActiveSection('reservations')}>TrendingProducts</Link>
                     </li>
                     <li>
                         <Link to="feedback" onClick={() => setActiveSection('feedback')}>Feedbacks</Link>
                     </li>
                     <li>
-                        <Link to="menu" onClick={() => setActiveSection('menu')}>Menu</Link>
+                        <Link to="menu" onClick={() => setActiveSection('menu')}>Products</Link>
                     </li>
                 </ul>
             </aside>

@@ -10,7 +10,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Signup from './pages/signup';
 import Gallery from './pages/gallery';
-import Events from './pages/Events';
+import TrendingProducts from './pages/TrendingProducts';
 import Feedback from './pages/Feedback';
 import Cart from './pages/cart';
 import PrivateRoute from './pages/PrivateRoute';
@@ -53,7 +53,7 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/gallery" element={<Gallery />} />
-            <Route path="/event" element={<Events />} />
+            <Route path="/event" element={<TrendingProducts />} />
             <Route path="/feedback" element={<Feedback />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/payment" element={<Payment />} />

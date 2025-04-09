@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import OfferPopup from './OfferPopup';
-import backgroundVideo from '../assets/video.mp4'; // Ensure the correct path to the video file
+import backgroundVideo from '../assets/freshit.mp4'; // Ensure the correct path to the video file
 
 const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -33,9 +33,9 @@ const Home = () => {
           Your browser does not support the video tag.
         </video>
 
-        <p>Your favorite place for food, drinks, and events!</p>
+        <p>Your favorite place for food, electronics item, and cloths!</p>
         <Link to="/gallery">
-          <button className="cta-button">Explore</button>
+          {/* <button className="cta-button">Explore</button> */}
         </Link>
       </section>
 
@@ -44,14 +44,14 @@ const Home = () => {
         <div className="feature-cards">
           <div className="feature-card">
             <Link to="/reservations" className="feature-link">
-              <h3>Online Reservations</h3>
-              <p>Book your table easily through our online reservation system.</p>
+              <h3>Buy Now</h3>
+              <p>Get an exclusive 50% OFF on the MRP—don’t miss this unbeatable deal!</p>
             </Link>
           </div>
           <div className="feature-card">
             <Link to="/event" className="feature-link">
-              <h3>Events Calendar</h3>
-              <p>Stay updated on our upcoming events and RSVP quickly.</p>
+              <h3>TrendingProducts</h3>
+              <p>Explore our most popular items and grab the best deals before they're gone!</p>
             </Link>
           </div>
           <div className="feature-card">
