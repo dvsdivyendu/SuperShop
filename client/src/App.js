@@ -6,8 +6,6 @@ import Menu from './pages/Menu';
 import Reservations from './pages/Reservation';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
-import Header from './components/header';
-import Footer from './components/footer';
 import Signup from './pages/signup';
 import Gallery from './pages/gallery';
 import TrendingProducts from './pages/TrendingProducts';
@@ -19,7 +17,7 @@ import AdminPage from './pages/AdminPage';
 import { setUserFromCookie, logout } from './slices/authSlice';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
-
+import Layout from "./components/common/Layout";
 const App = () => {
   const dispatch = useDispatch();
 
@@ -45,7 +43,7 @@ const App = () => {
   return (
     <Router>
       <div className="app-container">
-        <Header />
+      <Layout>
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -62,7 +60,7 @@ const App = () => {
             <Route path="/profile" element={<PrivateRoute element={<Profile />} roles={['user']} />} />
           </Routes>
         </main>
-        <Footer />
+        </Layout>
       </div>
     </Router>
   );

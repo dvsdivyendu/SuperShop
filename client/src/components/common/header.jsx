@@ -3,11 +3,11 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faShoppingCart, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'; 
 import { useSelector, useDispatch } from 'react-redux'; 
-import { logout } from '../slices/authSlice';
-import { clearCart, setCartItems } from '../slices/slice'; 
+import { logout } from '../../slices/authSlice';
+import { clearCart, setCartItems } from '../../slices/slice'; 
 import axios from 'axios';
-import '../components/Header.css';
-import logoImage from '../assets/icon.jpg';
+import '../common/Header.css';
+import logoImage from '../../assets/icon.jpg';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -38,6 +38,7 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
+      
         await axios.post('http://localhost:5000/api/auth/logout', {}, { withCredentials: true });
         dispatch(logout());
         dispatch(clearCart());
