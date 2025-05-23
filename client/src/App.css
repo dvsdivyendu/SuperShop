@@ -1,0 +1,9 @@
+
+  /* index.css or App.css */
+@import '~react-toastify/dist/ReactToastify.css';
+
+  .main-content{
+    padding: 0px 20px !important;
+    margin-top: 44px !important;
+    margin-Bottom:'44px';
+  }
